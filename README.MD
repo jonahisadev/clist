@@ -2,12 +2,7 @@
 
 A resizable list macro for C
 
-## About
-
-Below is why I made this, how to use it, and how you can
-contribute.
-
-### What Is This?
+## What Is This?
 
 A big reason I use C++ is for templates, specifically
 because I can use templates to easily create list classes
@@ -21,7 +16,7 @@ I created a macro that allows me to easily create list
 structures without having to code each list type by hand by
 using a generic structure and the C preprocessor.
 
-### How to Use (Quick Start)
+## How to Use (Quick Start)
 
 Go ahead and download `clist.h` and put that somewhere that
 you can include in your project.
@@ -64,13 +59,13 @@ documented below if you would like to know more of what they
 do. Following the above example should work for most, if not
 all implementations of lists.
 
-### Helper Functions
+## Helper Functions
 
 `T` is the list type
 
 `X` is the list name
 
-#### new
+### new
 
 ```c
 X* X_new(int size);
@@ -80,7 +75,7 @@ This creates a new list with `size * sizeof(T)` amount of
 memory. You can fit `size` amount of elements in the list
 before it resizes itself.
 
-#### add
+### add
 
 ```c
 void X_add(X* self, T data);
@@ -91,7 +86,7 @@ necessary. If the list needs to resize, the new max is
 double the last. For example, if your initial size is
 `5` then `5 * 2 == 10`, which is the new size.
 
-#### get
+### get
 
 ```c
 T X_get(X* self, int index);
@@ -100,7 +95,7 @@ T X_get(X* self, int index);
 This simply returns data from a specified index, similar
 to that of a standard array.
 
-#### delete
+### delete
 
 ```c
 void X_delete(X* self);
@@ -110,7 +105,7 @@ This deletes the data within the list, and then deletes
 the list itself. It is recommended that this is called
 before exiting the program.
 
-### How to Contribute
+## How to Contribute
 
 As of now, I'm just going to leave the macro as it is.
 If you happen upon some bugs, you can either submit an
