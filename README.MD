@@ -25,17 +25,21 @@ you can include in your project.
 #include "clist.h"
 ```
 
-Call the `CLIST` macro to create the structure and functions
+Call the `CLIST_SOURCE` and `CLIST_HEADER` macro to create the structure and functions
 that go along with it. Below is an example of creating an
 integer list.
 
 ```c
-CLIST(int, IntList)
+CLIST_SOURCE(int, IntList)
+CLIST_HEADER(int, IntList)
 ```
 
 `int` is the type that the list will use and `IntList` is the
 name of the structure to be created, along with the helper
 functions.
+
+The reason for both macros is to allow the macro to work across
+header and source files.
 
 Below is an example of how one might use a list from the one
 created above.
@@ -43,7 +47,8 @@ created above.
 ```c
 #include "clist.h"
 
-CLIST(int, IntList)
+CLIST_HEADER(int, IntList)
+CLIST_SOURCE(int, IntList)
 
 int main() {
 	IntList* list = IntList_new(1);

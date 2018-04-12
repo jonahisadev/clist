@@ -6,12 +6,7 @@
 
 #include <stdlib.h>
 
-#define CLIST(T, name) \
-typedef struct _##name { \
-	T* data; \
-	int size; \
-	int ptr; \
-} name; \
+#define CLIST_SOURCE(T, name) \
 name* name##_new(int size) { \
 	name* self = (name*) malloc(sizeof(name)); \
 	self->data = (T*) malloc(sizeof(T) * size); \
@@ -27,9 +22,20 @@ void name##_add(name* self, T data) { \
 		self->size *= 2; \
 		self->data = (T*) realloc(self->data, self->size); \
 	} \
-	self->data[self->ptr] = data; \
+	self->data[self->ptr++] = data; \
 } \
 void name##_delete(name* self) { \
 	free(self->data); \
 	free(self); \
 }
+
+#define CLIST_HEADER(T, name) \
+typedef struct _##name { \
+	T* data; \
+	int size; \
+	int ptr; \
+} name; \
+name* name##_new(int size); \
+T name##_get(name* self, int index); \
+void name##_add(name* self, T data); \
+void name##_delete(name* self);
